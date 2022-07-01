@@ -5,9 +5,10 @@ namespace PersonManagement
 {
     internal class Program
     {
+        public static List<Person> persons { get; set; } = new List<Person>();
         static void Main(string[] args)
         {
-            List<Person> persons = new List<Person>();
+            
 
             Console.WriteLine("Our available commands :");
             Console.WriteLine("/add-new-person");
@@ -33,10 +34,8 @@ namespace PersonManagement
                     Console.Write("Please add person's FIN code :");
                     string fin = Console.ReadLine();
 
-                    Person person = new Person(name, lastName, fin);
-                    persons.Add(person);
-
-                    Console.WriteLine(person.GetInfo() + " - Added to system.");
+                    AddNewPerson(name,lastName,fin);
+                   
 
                 }
                 else if (command == "/remove-person")
@@ -81,6 +80,15 @@ namespace PersonManagement
                     Console.WriteLine();
                 }
             }
+
+            
+        }
+        public static void AddNewPerson(string name,string lastname,string fin)
+        {
+            Person person = new Person(name, lastname, fin);
+            persons.Add(person);
+
+            Console.WriteLine(person.GetInfo() + " - Added to system.");
         }
     }
 
