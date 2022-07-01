@@ -12,7 +12,8 @@ namespace PersonManagement
 
             Console.WriteLine("Our available commands :");
             Console.WriteLine("/add-new-person");
-            Console.WriteLine("/remove-person");
+            Console.WriteLine("/remove-person-by-fin");
+            Console.WriteLine("/remove-person-by-id");
             Console.WriteLine("/show-persons");
             Console.WriteLine("/remove-all");
             Console.WriteLine("/exit");
@@ -39,12 +40,19 @@ namespace PersonManagement
                     Console.WriteLine(person.GetInfo() + " - Added to system.");
 
                 }
-                else if (command == "/remove-person")
+                else if (command == "/remove-person-by-fin")
                 {
                     Console.Write("To remove person, please enter his/her FIN code : ");
                     string fin = Console.ReadLine();
 
                     RemovePerson(fin);
+                }
+                else if (command == "/remove-person-by-id")
+                {
+                    Console.Write("To remove person, please enter his/her Id : ");
+                    int id = Convert.ToInt32(Console.ReadLine());
+
+                    RemovePerson(id);
                 }
                 else if (command == "/show-persons")
                 {
@@ -91,6 +99,22 @@ namespace PersonManagement
                 }
             }
         }
+        public static void RemovePerson(int id)
+        {
+            for (int i = 0; i < persons.Count; i++)
+            {
+                if (persons[i].ID== id)
+                {
+                    Console.WriteLine(persons[i].GetInfo());
+                    persons.RemoveAt(i);
+                    Console.WriteLine("Person removed successfully");                   
+                }
+                
+            }
+          
+        }
+
+
 
         public static void ShowPerson()
         {
@@ -112,7 +136,7 @@ namespace PersonManagement
 
     class Person
     {
-        public static int _idcounter=1;
+        private static int _idcounter=1;
         public int ID { get; private set; } 
         public string Name { get; set; }
         public string LastName { get; set; }
