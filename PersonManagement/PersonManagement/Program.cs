@@ -50,7 +50,7 @@ namespace PersonManagement
                 else if (command == "/remove-person-by-id")
                 {
                     Console.Write("To remove person, please enter his/her Id : ");
-                    int id = Convert.ToInt32(Console.ReadLine());
+                    uint id = Convert.ToUInt32(Console.ReadLine());
 
                     RemovePerson(id);
                 }
@@ -99,7 +99,7 @@ namespace PersonManagement
                 }
             }
         }
-        public static void RemovePerson(int id)
+        public static void RemovePerson(uint id)
         {
             for (int i = 0; i < persons.Count; i++)
             {
