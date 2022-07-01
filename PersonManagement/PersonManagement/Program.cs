@@ -13,6 +13,7 @@ namespace PersonManagement
             Console.WriteLine("/add-new-person");
             Console.WriteLine("/remove-person");
             Console.WriteLine("/show-persons");
+            Console.WriteLine("/remove-all");
             Console.WriteLine("/exit");
 
             while (true)
@@ -60,6 +61,15 @@ namespace PersonManagement
                     {
                         Console.WriteLine(person.GetInfo());
                     }
+                }
+                else if (command == "/remove-all")
+                {
+                    for (int i = 0; i < persons.Count; i++)
+                    {
+                        persons.RemoveAt(i);
+                        
+                    }
+                    Console.WriteLine("All persons removed");
                 }
                 else if (command == "/exit")
                 {
