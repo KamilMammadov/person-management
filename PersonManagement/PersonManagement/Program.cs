@@ -42,24 +42,14 @@ namespace PersonManagement
                 {
                     Console.Write("To remove person, please enter his/her FIN code : ");
                     string fin = Console.ReadLine();
-                    for (int i = 0; i < persons.Count; i++)
-                    {
-                        if (persons[i].FIN == fin)
-                        {
-                            Console.WriteLine(persons[i].GetInfo());
-                            persons.RemoveAt(i);
-                            Console.WriteLine("Person removed successfully");
-                        }
-                    }
 
+                    RemovePerson(fin);
                 }
                 else if (command == "/show-persons")
                 {
                     Console.WriteLine("Persons in database : ");
-                    foreach (Person person in persons)
-                    {
-                        Console.WriteLine(person.GetInfo());
-                    }
+                    ShowPerson();
+                    
                 }
                 else if (command == "/remove-all")
                 {
@@ -90,6 +80,28 @@ namespace PersonManagement
 
             Console.WriteLine(person.GetInfo() + " - Added to system.");
         }
+
+        public static void RemovePerson(string fin)
+        {
+            for (int i = 0; i < persons.Count; i++)
+            {
+                if (persons[i].FIN == fin)
+                {
+                    Console.WriteLine(persons[i].GetInfo());
+                    persons.RemoveAt(i);
+                    Console.WriteLine("Person removed successfully");
+                }
+            }
+        }
+
+        public static void ShowPerson()
+        {
+            foreach (Person person in persons)
+            {
+                Console.WriteLine(person.GetInfo());
+            }
+        }
+
     }
 
     class Person
