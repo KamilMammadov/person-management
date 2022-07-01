@@ -53,10 +53,7 @@ namespace PersonManagement
                 }
                 else if (command == "/remove-all")
                 {
-                    for (int i = persons.Count-1; i >=0; i--)
-                    {
-                        persons.RemoveAt(i);   
-                    }
+                    RemoveAllPersons();
                     Console.WriteLine("All persons removed");
                 }
                 else if (command == "/exit")
@@ -99,6 +96,14 @@ namespace PersonManagement
             foreach (Person person in persons)
             {
                 Console.WriteLine(person.GetInfo());
+            }
+        }
+
+        public static void RemoveAllPersons()
+        {
+            for (int i = persons.Count - 1; i >= 0; i--)
+            {
+                persons.RemoveAt(i);
             }
         }
 
