@@ -64,10 +64,9 @@ namespace PersonManagement
                 }
                 else if (command == "/remove-all")
                 {
-                    for (int i = 0; i < persons.Count; i++)
+                    for (int i = persons.Count-1; i >=0; i--)
                     {
-                        persons.RemoveAt(i);
-                        
+                        persons.RemoveAt(i);   
                     }
                     Console.WriteLine("All persons removed");
                 }
